@@ -1,0 +1,6 @@
+framework module TrafficBase {
+  umbrella header "TrafficBase-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,39 @@
+//
+//  DefaultConfig.swift
+//  TrafficFramework
+//
+//  Created by Faraz Hussain Siddiqui on 8/13/17.
+//  Copyright © 2017 Faraz Hussain Siddiqui. All rights reserved.
+//
+
+import UIKit
+
+public let DEFAULT_CONFIG = DefaultConfig.shared;
+
+public class DefaultConfig: NSObject {
+    
+    static let shared = DefaultConfig()
+    
+    //Project settings
+    public var baseUrl:String = "fontDefault";
+
+    public var defaultFontName:String = "fontDefault";
+    public var defaultFontSize:String = "sizeMedium";
+    public var defaultFontColor:String = "theme";
+    
+    public var defaultButtonFontColor = "themeButton";
+    public var defaultButtonSelectedFontColor = "themeSelectedButton";
+
+    //PRIVATE init so that singleton class should not be reinitialized from anyother class
+    fileprivate override init() {
+        super.init()
+        
+        #if PROD
+            baseUrl = "https://network.getsandbox.com/"
+        #elseif STAG
+            baseUrl = "https://network.getsandbox.com/"
+        #else
+            baseUrl = "https://network.getsandbox.com/"
+        #endif
+    }
+}

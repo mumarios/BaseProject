@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (4.6.0)
+  - SwiftyJSON (4.0.0)
+  - TrafficBase (1.0.0):
+    - Alamofire
+    - SwiftyJSON
+
+DEPENDENCIES:
+  - Alamofire
+  - SwiftyJSON
+  - TrafficBase (from `../`)
+
+EXTERNAL SOURCES:
+  TrafficBase:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  TrafficBase: f1a0e3cd556f98eda0db0d7a23a95f7ff50c47aa
+
+PODFILE CHECKSUM: f43eb2472612f2c06f161fc08cb94507cbd82cdf
+
+COCOAPODS: 1.2.1

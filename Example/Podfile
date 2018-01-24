@@ -1,5 +1,8 @@
 use_frameworks!
 
+pod 'Alamofire'
+pod 'SwiftyJSON'
+
 target 'TrafficBase_Example' do
   pod 'TrafficBase', :path => '../'
 

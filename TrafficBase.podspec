@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TrafficBase'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of TrafficBase.'
+  s.version          = '1.0.0'
+  s.summary          = 'Base framework for iOS projects'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,15 +17,13 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.description      = "This is the base project that contains helper methods and functionality to speed up iOS development"
 
-  s.homepage         = 'https://github.com/FaraziOS/TrafficBase'
+  s.homepage         = 'https://bitbucket.org/mnomansd/trafficbase'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'FaraziOS' => 'faraz.siddiqui@wewanttraffic.pk' }
-  s.source           = { :git => 'https://github.com/FaraziOS/TrafficBase.git', :tag => s.version.to_s }
+  s.author           = { 'Traffic Digital' => 'wewanttraffic.com' }
+  s.source           = { :git => 'https://mnomansd@bitbucket.org/mnomansd/trafficbase.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
@@ -38,5 +36,6 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'Alamofire'
+  s.dependency 'SwiftyJSON'
 end
