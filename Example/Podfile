@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'TrafficBase_Example' do
+  pod 'TrafficBase', :path => '../'
+
+  target 'TrafficBase_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
