@@ -18,6 +18,13 @@ public struct AFRequestParam {
     var params: [String : AnyObject]?
     var headers: [String : String]?
     var method: HTTPMethod
+    
+    public init(endpoint:String, params: [String : AnyObject], headers: [String : String], method: HTTPMethod) {
+        self.endpoint = endpoint
+        self.params = params
+        self.headers = headers
+        self.method = method
+    }
 }
 
 //param with image
@@ -27,6 +34,14 @@ public struct AFRequestParamWithImage {
     var headers: [String : String]?
     var method: HTTPMethod
     var images: [UIImage]
+    
+    public init(endpoint:String, params: [String : AnyObject], headers: [String : String], method: HTTPMethod, images: [UIImage]) {
+        self.endpoint = endpoint
+        self.params = params
+        self.headers = headers
+        self.method = method
+        self.images = images
+    }
 }
 
 public class AFNetwork: NSObject {
@@ -350,9 +365,3 @@ extension String {
         return url.host
     }
 }
-
-
-
-
-
-
