@@ -23,7 +23,7 @@ pod 'TrafficBase'
 
 ## Author
 
-FaraziOS, faraz.siddiqui@wewanttraffic.pk
+Traffic Digital, wewanttraffic.com
 
 ## License
 
