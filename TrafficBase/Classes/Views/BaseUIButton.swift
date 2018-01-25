@@ -9,7 +9,7 @@
 import UIKit
 
 open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesignable, MaskDesignable, FillDesignable {
-
+    
     @IBInspectable open var fontNameTheme:String? = DefaultConfig.shared.defaultFontName {
         
         didSet {
@@ -17,10 +17,17 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
         }
     }
     
+    private var fontColor : UIColor? = nil
+    private var fontSelectedColor : UIColor? = nil
+    
     @IBInspectable open var fontColorTheme:String? = DefaultConfig.shared.defaultButtonFontColor  {
         
         didSet {
-            configureFont();
+            
+            fontColor = (fontColorTheme != nil && !(fontColorTheme?.isEmpty)!) ? ColorManager.color(forKey: fontColorTheme!) : UIColor.black;
+            fontSelectedColor = fontColor
+            self.setTitleColor(fontColor, for: .normal);
+            //--wwconfigureFont();
         }
     }
     
@@ -32,10 +39,14 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
     
     @IBInspectable open var fontColorSelectedTheme: String? = DefaultConfig.shared.defaultButtonSelectedFontColor {
         didSet {
-            configureSelectedFont();
+            
+            fontSelectedColor = (fontColorSelectedTheme != nil && !(fontColorSelectedTheme?.isEmpty)!) ? ColorManager.color(forKey: fontColorSelectedTheme!) : fontColor;
+            
+            
+            //--ww  configureSelectedFont();
         }
     }
-
+    
     // MARK: - CornerDesignable
     @IBInspectable open var cornerRadius: CGFloat = CGFloat.nan {
         didSet {
@@ -95,11 +106,42 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
         }
     }
     
+    
+    private var bgColor : UIColor? = nil
+    private var bgSelectedColor : UIColor? = nil
     // MARK: - FillDesignable
     @IBInspectable open var fillThemeColor: String? {
         didSet {
-            configureFillColor();
+            
+            let fillColor = UIColor.color(forKey: fillThemeColor);
+            if fillColor == nil {
+                #if DEBUG
+                    assertionFailure("Fill color for key : \(String(describing: fillThemeColor)) not found\n")
+                #endif
+                return;
+            }else{
+                bgColor = fillColor
+                self.backgroundColor = bgColor
+            }
+            //--ww configureFillColor();
         }
+    }
+    
+    @IBInspectable var bgHighlightedColor: String? {
+        didSet{
+            
+            let fillColor = UIColor.color(forKey: bgHighlightedColor);
+            if fillColor == nil {
+                #if DEBUG
+                    assertionFailure("Fill color for key : \(String(describing: bgHighlightedColor)) not found\n")
+                #endif
+                return;
+            }else{
+                bgSelectedColor = fillColor
+            }
+            
+        }
+        
     }
     
     
@@ -108,7 +150,7 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
             configureOpacity();
         }
     }
-
+    
     
     // MARK: - MaskDesignable
     open var maskType: MaskType = .none {
@@ -135,11 +177,16 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
             super.setTitle(title, for: state);
         }
     }
-
+    
     //MARK: - Initializers
     open override func awakeFromNib() {
         super.awakeFromNib();
         configureInspectableProperties();
+        
+        self.addTarget(self, action: #selector(self.highlight), for: .touchDown)
+        self.addTarget(self, action: #selector(self.unhighlight), for: .touchUpInside)
+        self.addTarget(self, action: #selector(self.unhighlight), for: .touchDragOutside)
+        self.addTarget(self, action: #selector(self.unhighlight), for: .touchCancel)
     }
     
     open override func layoutSubviews() {
@@ -168,5 +215,27 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
             }
         }
     }
-
+    
+    @objc func unhighlight(){
+        guard bgColor != nil else {
+            
+            return;
+        }
+        
+        self.setTitleColor(fontColor, for: .normal);
+        self.backgroundColor = bgColor
+        
+    }
+    
+    @objc func highlight(){
+        
+        guard bgSelectedColor != nil else {
+            
+            return;
+        }
+        
+        self.setTitleColor(fontSelectedColor, for: .normal);
+        self.backgroundColor = bgSelectedColor
+    }
+    
 }

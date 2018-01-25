@@ -44,7 +44,7 @@ extension FontDesignable where Self: UINavigationController {
         }
         
         let fColor = (fontColorTheme != nil && !(fontColorTheme??.isEmpty)!) ? ColorManager.color(forKey: fontColorTheme!) : UIColor.black;
-
+        
         var attrDict:[NSAttributedStringKey : Any] = self.navigationBar.titleTextAttributes  ?? [NSAttributedStringKey : Any]()
         attrDict[NSAttributedStringKey.foregroundColor] = fColor;
         attrDict[NSAttributedStringKey.font] = fnt;
@@ -100,18 +100,12 @@ extension FontDesignable where Self: UIView {
 fileprivate extension FontDesignable {
     func getFont()->UIFont? {
         let fName = (fontNameTheme != nil && !(fontNameTheme?.isEmpty)!) ? FontManager.constant(forKey: fontNameTheme!) : "Helvetica";
-        let fSize = (fontSizeTheme != nil && !(fontSizeTheme?.isEmpty)!) ? FontManager.style(forKey: fontSizeTheme!) : 25;
-        var minFontSize:CGFloat = 0;
+        let fontSize = (fontSizeTheme != nil && !(fontSizeTheme?.isEmpty)!) ? FontManager.style(forKey: fontSizeTheme!) : 25;
         
-        minFontSize = CGFloat.init(FontManager.style(forKey: "minimumFontSize"))
-        
-        var resizedFontSize = DesignUtility.convertToRatio(CGFloat(fSize), sizedForIPad: DesignUtility.isIPad, sizedForNavi: false);
-        
-        if resizedFontSize < minFontSize {
-            resizedFontSize = minFontSize;
-        }
+        let resizedFontSize = DesignUtility.getFontSize(fSize: CGFloat(fontSize))
         
         let fnt = UIFont.init(name: fName!, size: resizedFontSize);
         return fnt;
     }
 }
+

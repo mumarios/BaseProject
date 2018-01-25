@@ -10,15 +10,34 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class AFNetwork: NSObject {
+//MARK: Param Types
 
+//simple param
+public struct AFRequestParam {
+    var endpoint: String = ""
+    var params: [String : AnyObject]?
+    var headers: [String : String]?
+    var method: HTTPMethod
+}
+
+//param with image
+public struct AFRequestParamWithImage {
+    var endpoint: String = ""
+    var params: [String : AnyObject]?
+    var headers: [String : String]?
+    var method: HTTPMethod
+    var images: [UIImage]
+}
+
+public class AFNetwork: NSObject {
+    
     //MARK: constant and variable
     //manager
-    var alamoFireManager : Alamofire.SessionManager!
+    public var alamoFireManager : Alamofire.SessionManager!
     
     //network
-    var baseURL = DEFAULT_CONFIG.baseUrl
-    var commonHeaders: Dictionary<String, String> = [
+    public var baseURL = DEFAULT_CONFIG.baseUrl
+    public var commonHeaders: Dictionary<String, String> = [
         "Authorization" : "",
         "Accept" : "application/json"
     ]
@@ -42,16 +61,23 @@ class AFNetwork: NSObject {
     }
     
     //shared Instance
-    static let shared: AFNetwork = {
+    public static let shared: AFNetwork = {
         let instance = AFNetwork()
         return instance
     }()
     
     // MARK: - : override
     override init() {
+        alamoFireManager = Alamofire.SessionManager(
+            configuration: URLSessionConfiguration.default
+        )
+        alamoFireManager.session.configuration.timeoutIntervalForRequest = 120
+    }
+    
+    public func setupSSLPinning(_ fileNameInBundle: String) {
         
         // Set up certificates
-        let pathToCert = Bundle.main.path(forResource: "getsandbox", ofType: "crt")
+        let pathToCert = Bundle.main.path(forResource: fileNameInBundle, ofType: "crt")
         let localCertificate = NSData(contentsOfFile: pathToCert!)
         let certificates = [SecCertificateCreateWithData(nil, localCertificate!)!]
         
@@ -63,8 +89,8 @@ class AFNetwork: NSObject {
         )
         
         let serverTrustPolicies = [
-                AFNetwork.shared.baseURL.getDomain() ?? AFNetwork.shared.baseURL : serverTrustPolicy
-            ]
+            AFNetwork.shared.baseURL.getDomain() ?? AFNetwork.shared.baseURL : serverTrustPolicy
+        ]
         
         alamoFireManager =
             Alamofire.SessionManager(
@@ -72,7 +98,6 @@ class AFNetwork: NSObject {
                 serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
         )
         
-        alamoFireManager.session.configuration.timeoutIntervalForRequest = 120
     }
 }
 
@@ -80,7 +105,7 @@ class AFNetwork: NSObject {
 extension AFNetwork {
     
     //general request
-    func apiRequest(_ info: AFRequestParam, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void) {
+    public func apiRequest(_ info: AFRequestParam, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void) {
         
         //request
         alamoFireManager.request(self.baseURL + info.endpoint, method: info.method, parameters: nil, encoding: JSONEncoding.default, headers: mergeWithCommonHeaders(info.headers)).responseJSON { (response) -> Void in
@@ -144,7 +169,7 @@ extension AFNetwork {
                         
                         //set progress view
                         self.setProgressProgress(1.0)
-
+                        
                         switch response.result {
                         case .success(let value):
                             
@@ -174,7 +199,7 @@ extension AFNetwork {
 // MARK: - Progress and spinner methods
 extension AFNetwork {
     
-    func showProgressView(_ customView: UIView?) {
+    public func showProgressView(_ customView: UIView?) {
         
         var window = customView
         
@@ -224,7 +249,7 @@ extension AFNetwork {
     }
     
     //hide progress view
-    func hideProgressView(_ customView: UIView?) {
+    public func hideProgressView(_ customView: UIView?) {
         var window: UIWindow?
         if customView != nil {
             window = customView as? UIWindow
@@ -238,7 +263,7 @@ extension AFNetwork {
     }
     
     //show spinner
-    func showSpinner(_ customView: UIView?) {
+    public func showSpinner(_ customView: UIView?) {
         
         var window = customView
         
@@ -269,7 +294,7 @@ extension AFNetwork {
     }
     
     //hide spinner
-    func hideSpinner(_ customView: UIView?) {
+    public func hideSpinner(_ customView: UIView?) {
         
         var window: UIWindow?
         

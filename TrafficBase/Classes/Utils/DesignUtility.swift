@@ -9,7 +9,7 @@
 import UIKit
 
 class DesignUtility: NSObject {
-
+    
     @nonobjc static let deviceRatio:CGFloat = UIScreen.main.bounds.height / 736.0;
     @nonobjc static let deviceRatioWN:CGFloat = (UIScreen.main.bounds.height - 64.0) / (736.0 - 64.0); // Ratio with Navigation
     
@@ -34,13 +34,29 @@ class DesignUtility: NSObject {
         }
     }
     
+    //Getting font size with minimum range
+    
+    public class func getFontSize(fSize : CGFloat) ->CGFloat{
+        var minFontSize:CGFloat = 0;
+        
+        minFontSize = CGFloat.init(FontManager.style(forKey: "minimumFontSize"))
+        
+        var resizedFontSize = DesignUtility.convertToRatio(fSize, sizedForIPad: DesignUtility.isIPad, sizedForNavi: false);
+        
+        if resizedFontSize < minFontSize {
+            resizedFontSize = minFontSize;
+        }
+        
+        return resizedFontSize
+    }
+    
     /// Flag to check user interfce layout direction
     @nonobjc public static var isRTL:Bool  {
         get {
             return false;
         }
     }
-
+    
     public class func convertToRatioSizedForNavi(_ value:CGFloat) -> CGFloat {
         return self.convertToRatio(value, sizedForIPad: false, sizedForNavi:true);
     }
@@ -50,7 +66,7 @@ class DesignUtility: NSObject {
         if (DesignUtility.isIPad && !sizedForIPad) {
             return value;
         }
-                if (sizedForNavi) {
+        if (sizedForNavi) {
             return value * DesignUtility.deviceRatioWN; // With Navigation
         }
         
@@ -58,7 +74,7 @@ class DesignUtility: NSObject {
     }
     
     
-
+    
     
     public class func convertPointToRatio(_ value:CGPoint, sizedForIPad:Bool = false) -> CGPoint {
         return CGPoint(x:self.convertToRatio(value.x, sizedForIPad: sizedForIPad), y:self.convertToRatio(value.y, sizedForIPad: sizedForIPad));
@@ -69,3 +85,4 @@ class DesignUtility: NSObject {
     }
     
 }
+
