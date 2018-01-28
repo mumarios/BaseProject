@@ -14,7 +14,19 @@ public extension StoryBoardHandler where Self: UIViewController {
     
     public static func loadVC() -> Self{
         
-        return viewController(viewControllerClass: self, storyBoardName: self.myStoryBoard)
+        if DeviceUtility.isIpad() == false{
+            
+            return viewController(viewControllerClass: self, storyBoardName: self.myStoryBoard.forIphone)
+        }
+        else if DeviceUtility.isIpad() == true{
+            
+            if self.myStoryBoard.forIpad == nil{
+                
+                return viewController(viewControllerClass: self, storyBoardName: self.myStoryBoard.forIphone)
+            }
+        }
+        
+        return viewController(viewControllerClass: self, storyBoardName: self.myStoryBoard.forIpad)
     }
     
     // Instanitating an specific storyboard
@@ -24,11 +36,11 @@ public extension StoryBoardHandler where Self: UIViewController {
     }
     
     // Instanitating an specific view controller from storyboard
-    public static func viewController<T : UIViewController>(viewControllerClass : T.Type, storyBoardName : String,  function : String = #function, line : Int = #line, file : String = #file) -> T {
+    public static func viewController<T : UIViewController>(viewControllerClass : T.Type, storyBoardName : String?,  function : String = #function, line : Int = #line, file : String = #file) -> T {
         
         let storyboardID = (viewControllerClass as UIViewController.Type).storyboardID
         
-        guard let scene = instanceStoryBoard(storyboardName:storyBoardName).instantiateViewController(withIdentifier: storyboardID) as? T else {
+        guard let scene = instanceStoryBoard(storyboardName:storyBoardName!).instantiateViewController(withIdentifier: storyboardID) as? T else {
             
             fatalError("ViewController with identifier \(storyboardID), not found in \(storyBoardName) Storyboard.\nFile : \(file) \nLine Number : \(line) \nFunction : \(function)")
         }
@@ -95,18 +107,80 @@ public extension StoryBoardHandler where Self: UIViewController {
             return
         }
         
-        //for i in 0..<countControllers {
+        var controlerFound = false
+        
         _ = controllers.enumerated().flatMap { i, object in
             
             if (object.isKind(of: NSClassFromString(className)!))
             {
                 NSLog("controller found at index %d", i)
                 
+                controlerFound = true
                 _ = navCon.popToViewController((controllers[i]), animated: true)
                 return;
             }
         }
-        //        }
+    }
+    
+    // MARK: - Push or Pop to specific view controller
+    public func pushOrPopViewController<T: UIViewController>(navigationController:UINavigationController ,animation : Bool, viewControllerClass:T.Type, viewControllerStoryboad:(forIphone : String, forIpad : String?), configurePushedVC: ((T) -> Void)? = nil) {
+        
+        let navCon = navigationController
+        
+        let controllers = navCon.viewControllers
+        let countControllers = controllers.count
+        
+        let storyboardID = viewControllerClass.storyboardID
+        
+        let className = Bundle.main.infoDictionary!["CFBundleName"] as! String + "." + storyboardID
+        
+        if countControllers == 0 {
+            
+            return
+        }
+        
+        var controlerFound = false
+        
+        _ = controllers.enumerated().flatMap { i, object in
+            
+            if (object.isKind(of: NSClassFromString(className)!))
+            {
+                NSLog("controller found at index %d", i)
+                
+                controlerFound = true
+                _ = navCon.popToViewController((controllers[i]), animated: true)
+                return;
+            }
+        }
+        
+        if controlerFound == false{
+            
+            var storyboardName = ""
+            
+            if DeviceUtility.isIpad() == false{
+                
+                storyboardName = viewControllerStoryboad.forIphone
+            }
+            else if DeviceUtility.isIpad() == true{
+                
+                if viewControllerStoryboad.forIpad == nil{
+                    
+                    storyboardName = viewControllerStoryboad.forIphone
+                }
+                else{
+                    
+                    storyboardName = viewControllerStoryboad.forIpad!
+                }
+            }
+            
+            guard let newVC = Self.instanceStoryBoard(storyboardName:storyboardName).instantiateViewController(withIdentifier: storyboardID) as? T else {
+                
+                fatalError("ViewController with identifier \(storyboardID), not found in \(viewControllerStoryboad.forIphone) Storyboard.")
+            }
+            
+            configurePushedVC?(newVC)
+            navCon.pushViewController(newVC, animated: true)
+        }
     }
 }
 
@@ -123,6 +197,5 @@ public extension UIViewController {
 // MARK: - Protocol for setting storyboard name
 public protocol StoryBoardHandler {
     
-    static var myStoryBoard : String {get}
+    static var myStoryBoard : (forIphone : String, forIpad : String? ) {get}
 }
-

@@ -64,7 +64,7 @@ public class AFNetwork: NSObject {
     }
     
     //progress view
-    var progressLabel: UILabel?
+    public var progressLabel: UILabel?
     var progressView: UIProgressView?
     
     struct progressViewConfig {
@@ -120,10 +120,24 @@ public class AFNetwork: NSObject {
 extension AFNetwork {
     
     //general request
-    public func apiRequest(_ info: AFRequestParam, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void) {
+    public func apiRequest(_ info: AFRequestParam, isSpinnerNeeded: Bool, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void) {
+        
+        //if spinner needed
+        if isSpinnerNeeded {
+            DispatchQueue.main.async {
+                AFNetwork.shared.showSpinner(nil)
+            }
+        }
         
         //request
         alamoFireManager.request(self.baseURL + info.endpoint, method: info.method, parameters: nil, encoding: JSONEncoding.default, headers: mergeWithCommonHeaders(info.headers)).responseJSON { (response) -> Void in
+            
+            //remove spinner
+            if isSpinnerNeeded {
+                DispatchQueue.main.async {
+                    AFNetwork.shared.hideSpinner()
+                }
+            }
             
             if response.result.isSuccess {
                 
@@ -142,7 +156,14 @@ extension AFNetwork {
     }
     
     //file upload
-    func apiRequestUpload(_ info: AFRequestParamWithImage, success:@escaping (JSON?) -> Void, failure:@escaping (Error) -> Void) {
+    func apiRequestUpload(_ info: AFRequestParamWithImage, isSpinnerNeeded: Bool, success:@escaping (JSON?) -> Void, failure:@escaping (Error) -> Void) {
+        
+        //if spinner needed
+        if isSpinnerNeeded {
+            DispatchQueue.main.async {
+                AFNetwork.shared.showSpinner(nil)
+            }
+        }
         
         let URL = try! URLRequest(url: self.baseURL + info.endpoint, method: info.method, headers: mergeWithCommonHeaders(info.headers))
         
@@ -169,6 +190,13 @@ extension AFNetwork {
             }
             
         }, with: URL, encodingCompletion: { (result) in
+            
+            //remove spinner
+            if isSpinnerNeeded {
+                DispatchQueue.main.async {
+                    AFNetwork.shared.hideSpinner()
+                }
+            }
             
             switch result {
             case .success(let upload, _, _):
@@ -264,14 +292,9 @@ extension AFNetwork {
     }
     
     //hide progress view
-    public func hideProgressView(_ customView: UIView?) {
-        var window: UIWindow?
-        if customView != nil {
-            window = customView as? UIWindow
-        }
-        else {
-            window = returnTopWindow()
-        }
+    public func hideProgressView() {
+        
+        let window: UIWindow? = returnTopWindow()
         window?.viewWithTag(progressViewConfig.tag)?.removeFromSuperview()
         progressLabel = nil
         progressView = nil
@@ -309,16 +332,9 @@ extension AFNetwork {
     }
     
     //hide spinner
-    public func hideSpinner(_ customView: UIView?) {
+    public func hideSpinner() {
         
-        var window: UIWindow?
-        
-        if (customView != nil) {
-            window = (customView as? UIWindow)
-        }
-        else {
-            window = returnTopWindow()
-        }
+        let window: UIWindow? = returnTopWindow()
         window?.viewWithTag(spinnerViewConfig.tag)?.removeFromSuperview()
     }
 }
@@ -365,3 +381,4 @@ extension String {
         return url.host
     }
 }
+
