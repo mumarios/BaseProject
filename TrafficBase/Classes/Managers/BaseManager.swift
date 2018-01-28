@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseManager: NSObject {
+public class BaseManager: NSObject {
     
     private static var _sharedInstance: BaseManager = BaseManager();
     private var isIpad:Bool = false;
