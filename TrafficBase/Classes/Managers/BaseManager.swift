@@ -12,6 +12,7 @@ class BaseManager: NSObject {
     
     private static var _sharedInstance: BaseManager = BaseManager();
     private var isIpad:Bool = false;
+    public static var usingLanguageSpecificPlists:Bool = false;
     
     class var sharedInstance: BaseManager {
         get {
@@ -20,10 +21,14 @@ class BaseManager: NSObject {
     }
     
     private lazy var fileName: String = {
-        self.isIpad = DesignUtility.isIPad;
-        return  (self.isIpad == true && self is FontManager) ? "\(type(of: self))_iPad" : "\(type(of: self))";
+        
+        // If it is FontManager and iPad then concatenate _iPad to the file name
+        if self is FontManager, self.isIpad == true {
+            return  "\(type(of: self))_iPad";
+        }
+        return  "\(type(of: self))";
     }()
-
+    
     
     private var _dictData:NSMutableDictionary?
     internal var dictData:NSDictionary? {
@@ -54,12 +59,43 @@ class BaseManager: NSObject {
     
     private func setupPlistFile() {
         
-        if let path = Bundle.main.path(forResource: fileName, ofType: "plist") {
-            _dictData = NSMutableDictionary(contentsOf: URL(fileURLWithPath: path));
+        self.isIpad = DesignUtility.isIPad;
+        
+        // Special case for FontManager
+        if self is FontManager {
+            var fullPathUrl = fileName;
+            
+            // Add language code to the file name if language specific plists are used
+            if BaseManager.usingLanguageSpecificPlists {
+                let lang = NSLocale.preferredLanguages[0]
+                fullPathUrl =  "\(fileName)_\(lang)";
+            }
+            
+            // Check if language specific FontManager file is present
+            if let path = Bundle.main.path(forResource: fullPathUrl, ofType: "plist") {
+                _dictData = NSMutableDictionary(contentsOf: URL(fileURLWithPath: path));
+            }
+                // Fall back to default FontManager plist if language specific file is not found
+            else if let path  = Bundle.main.path(forResource: fileName, ofType: "plist") {
+                _dictData = NSMutableDictionary(contentsOf: URL(fileURLWithPath: path));
+            }
+                // Throw error if default FontManager is not found
+            else {
+                assertionFailure("Unable to load plist \(fileName)")
+            }
+            
         }
+            // Normal case for all other managers
         else {
-            assertionFailure("Unable to load plist \(fileName)")
+            if let path = Bundle.main.path(forResource: fileName, ofType: "plist") {
+                _dictData = NSMutableDictionary(contentsOf: URL(fileURLWithPath: path));
+            }
+            else {
+                assertionFailure("Unable to load plist \(fileName)")
+            }
         }
+        
     }
     
 }
+
