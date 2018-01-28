@@ -22,21 +22,6 @@ open class BaseUIViewController: UIViewController {
         return vc
     }
     
-    override open var title: String? {
-        get {
-            return super.title;
-        }
-        
-        set {
-            if let key:String = newValue , key.hasPrefix("#") == true {
-                _titleKey = key;  // holding key for using later
-                
-                super.title = TextManager.text(forKey: key);
-            } else {
-                super.title = newValue;
-            }
-        }
-    }
     
     override open func viewDidLoad() {
         super.viewDidLoad()

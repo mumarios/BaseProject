@@ -10,7 +10,6 @@ import UIKit
 
 open class BaseUISegmentedControl: UISegmentedControl, FontDesignable, FillDesignable, TintDesignable {
 
-    private var _titleKeys:[Int:String] = [Int:String]();
     
     // MARK: - FontDesignable
     @IBInspectable open var fontNameTheme:String? = DefaultConfig.shared.defaultFontName {
@@ -46,17 +45,7 @@ open class BaseUISegmentedControl: UISegmentedControl, FontDesignable, FillDesig
             configureTintColor();
         }
     }
-    
-    override open func setTitle(_ title: String?, forSegmentAt segment: Int) {
-        if let key:String = title , key.hasPrefix("#") == true {
-            
-            _titleKeys[segment] = key;  // holding key for using later
-            super.setTitle(TextManager.text(forKey: key), forSegmentAt: segment);
-        } else {
-            super.setTitle(title, forSegmentAt: segment);
-        }
-    }
-    
+
     //MARK: - Initializers
     open override func awakeFromNib() {
         super.awakeFromNib();
@@ -77,11 +66,5 @@ open class BaseUISegmentedControl: UISegmentedControl, FontDesignable, FillDesig
     fileprivate func configureAfterLayoutSubviews() {
         configureFont();
         
-        for i:Int in 0..<numberOfSegments {
-            if let key:String = _titleKeys[i] {
-                self.setTitle(key, forSegmentAt: i);
-            }
-        }
-
     }
 }

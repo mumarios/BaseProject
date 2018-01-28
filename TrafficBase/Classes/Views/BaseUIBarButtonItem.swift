@@ -24,33 +24,10 @@ open class BaseUIBarButtonItem: UIBarButtonItem, FontDesignable {
         }
     }
     
-    private var _titleKey:String?;
-    open override var title: String? {
-        set {
-            if let key:String = newValue , key.hasPrefix("#") == true{
-                
-                _titleKey = key;  // holding key for using later
-                super.title = TextManager.text(forKey: key);
-            } else {
-                super.title = newValue;
-            }
-        }
-        
-        get {
-            return super.title;
-        }
-    }
-    
     override open func awakeFromNib() {
         super.awakeFromNib();
         
         configureFont();
-        
-        if let txt:String = self.title , txt.hasPrefix("#") == true {
-            self.title = txt;
-        } else if _titleKey != nil {
-            self.title = _titleKey
-        }
     }
 }
 

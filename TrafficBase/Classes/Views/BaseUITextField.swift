@@ -9,7 +9,7 @@
 import UIKit
 
 open class BaseUITextField: UITextField, FontDesignable, CornerDesignable, BorderDesignable, PlaceholderDesignable, SideImageDesignable, FillDesignable {
-
+    
     @IBInspectable open var fontNameTheme:String? = DefaultConfig.shared.defaultFontName {
         
         didSet {
@@ -29,7 +29,7 @@ open class BaseUITextField: UITextField, FontDesignable, CornerDesignable, Borde
             configureFont();
         }
     }
-
+    
     // MARK: - CornerDesignable
     @IBInspectable open var cornerRadius: CGFloat = CGFloat.nan {
         didSet {
@@ -102,7 +102,7 @@ open class BaseUITextField: UITextField, FontDesignable, CornerDesignable, Borde
             configureOpacity();
         }
     }
-
+    
     // MARK: - PlaceholderDesignable
     @IBInspectable open var placeholderThemeColor: String? {
         didSet {
@@ -158,7 +158,8 @@ open class BaseUITextField: UITextField, FontDesignable, CornerDesignable, Borde
             configureImages();
         }
     }
-
+    
+    
     private var _placeholderKey:String?
     override open var placeholder: String? {
         get {
@@ -174,21 +175,15 @@ open class BaseUITextField: UITextField, FontDesignable, CornerDesignable, Borde
             
             let newPlaceHolder:String;
             
-            if (key.hasPrefix("#") == true) {
-                _placeholderKey = key;
-                
-                newPlaceHolder = TextManager.text(forKey: key);
-            } else {
-                _placeholderKey = nil;
-                
-                newPlaceHolder = key;
-            }
+            _placeholderKey = nil;
+            
+            newPlaceHolder = key;
             
             super.placeholder = newPlaceHolder;
             
         }
     }
-
+    
     //MARK: - Initializers
     open override func awakeFromNib() {
         super.awakeFromNib();
@@ -211,5 +206,5 @@ open class BaseUITextField: UITextField, FontDesignable, CornerDesignable, Borde
         configureCornerRadius();
         configureBorder();
     }
-
+    
 }

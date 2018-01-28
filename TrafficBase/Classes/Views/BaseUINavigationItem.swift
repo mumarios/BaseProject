@@ -10,23 +10,6 @@ import UIKit
 
 open class BaseUINavigationItem: UINavigationItem {
     
-    private var _titleKey:String?;
-    override open var title: String? {
-        get {
-            return super.title;
-        }
-        
-        set {
-            if let key:String = newValue , key.hasPrefix("#") == true {
-                _titleKey = key;  
-                
-                super.title = TextManager.text(forKey: key);
-            } else {
-                super.title = newValue;
-            }
-        }
-    }
-    
     public override init(title: String) {
         super.init(title: title);
     }
@@ -43,11 +26,7 @@ open class BaseUINavigationItem: UINavigationItem {
     
     
     func updateView() {
-        if let txt:String = self.title , txt.hasPrefix("#") == true {
-            self.title = txt;
-        } else if _titleKey != nil {
-            self.title = _titleKey;
-        }
+     
     }
 
 }

@@ -106,24 +106,6 @@ open class BaseUILabel: UILabel, FontDesignable, CornerDesignable, BorderDesigna
     }
 
     
-    private var _textKey: String?
-    override open var text: String? {
-        get {
-            return super.text;
-        }
-        
-        set {
-            if let key:String = newValue , key.hasPrefix("#") == true {
-                _textKey = key;
-                
-                super.text = TextManager.text(forKey: key);
-            } else {
-                super.text = newValue;
-            }
-        }
-    }
-
-    
     //MARK: - Initializers
     open override func awakeFromNib() {
         super.awakeFromNib();
@@ -145,12 +127,7 @@ open class BaseUILabel: UILabel, FontDesignable, CornerDesignable, BorderDesigna
         configureCornerRadius();
         configureBorder();
         configureFont();
-        
-        if let txt:String = self.text , txt.hasPrefix("#") == true {
-            self.text = txt;
-        } else if _textKey != nil {
-            self.text = _textKey;
-        }
+       
     }
 
 }

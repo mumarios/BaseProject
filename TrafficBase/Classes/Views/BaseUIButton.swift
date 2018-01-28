@@ -168,16 +168,6 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
         }
     }
     
-    private var _titleKeys:[UInt:String] = [UInt:String]();
-    override open func setTitle(_ title: String?, for state: UIControlState) {
-        if let key:String = title , key.hasPrefix("#") == true{
-            _titleKeys[state.rawValue] = key;  // holding key for using later
-            super.setTitle(TextManager.text(forKey: key), for: state);
-        } else {
-            super.setTitle(title, for: state);
-        }
-    }
-    
     //MARK: - Initializers
     open override func awakeFromNib() {
         super.awakeFromNib();
@@ -204,16 +194,7 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
         configureMask(previousMaskType: maskType);
         configureCornerRadius();
         configureBorder();
-        
-        let states:[UIControlState] = [.normal, .selected, .highlighted, .disabled]
-        
-        for state in states {
-            if let txt:String = self.title(for: state), txt.hasPrefix("#") == true {
-                self.setTitle(txt, for: state);
-            } else if let txtKey:String = _titleKeys[state.rawValue] {
-                self.setTitle(txtKey, for: state);
-            }
-        }
+
     }
     
     @objc func unhighlight(){
