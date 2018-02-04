@@ -76,13 +76,13 @@ class languageNSObjectClass: NSObject {
         MethodSwizzleGivenClassName(cls: Bundle.self, originalSelector: #selector(Bundle.localizedString(forKey:value:table:)),overrideSelector: #selector(Bundle.specialLocalizedStringForKey(key:value:table:)))
         
         
-        var transition: UIViewAnimationOptions = .transitionFlipFromLeft
+        //var transition: UIViewAnimationOptions = .transitionFlipFromLeft
         if language.currentAppleLanguage() == "ar" {
             language.setAppleLanguageTo(lang: "en")
             UIView.appearance().semanticContentAttribute = .forceRightToLeft
         } else {
             language.setAppleLanguageTo(lang: "ar")
-            transition = .transitionFlipFromRight
+            //transition = .transitionFlipFromRight
             UIView.appearance().semanticContentAttribute = .forceLeftToRight
         }
         

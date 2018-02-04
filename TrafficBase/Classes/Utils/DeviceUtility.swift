@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum  Device: Int {
+public enum Device: Int {
     case iPodTouch5,
     iPodTouch6,
     iPhone4,
@@ -41,10 +41,10 @@ enum  Device: Int {
     
 }
 
-class DeviceUtility: NSObject {
+public class DeviceUtility: NSObject {
     
     // Get the model name of device
-    class var modelName: Device {
+    public class var modelName: Device {
         
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -88,12 +88,12 @@ class DeviceUtility: NSObject {
     }
     
     // Check if the device is iPad
-    class func isIpad() -> Bool {
+    public class func isIpad() -> Bool {
         return UIUserInterfaceIdiom.pad == UIDevice.current.userInterfaceIdiom;
     }
     
     // Get the size of the device screen
-    class func getSize() -> CGSize {
+    public class func getSize() -> CGSize {
         
         var size : CGSize = CGSize(width: UIScreen.main.nativeBounds.size.width/UIScreen.main.scale, height: UIScreen.main.nativeBounds.size.height/UIScreen.main.scale)
         
@@ -105,7 +105,7 @@ class DeviceUtility: NSObject {
     }
     
     // Check if the orientation is landscape
-    class func isLandscape() -> Bool
+    public class func isLandscape() -> Bool
     {
         let orientation : UIInterfaceOrientation = UIApplication.shared.statusBarOrientation;
         
@@ -117,7 +117,7 @@ class DeviceUtility: NSObject {
     }
     
     // Get the language of the device
-    class func getDeviceLanguage() -> String
+    public class func getDeviceLanguage() -> String
     {
         let pre = NSLocale.preferredLanguages[0]
         
@@ -125,7 +125,7 @@ class DeviceUtility: NSObject {
     }
     
     // Check if the device is jail broken or not
-    class func isJailBrokeDevice() -> Bool {
+    public class func isJailBrokeDevice() -> Bool {
         #if arch(i386) || arch(x86_64)
             debugPrint("Simulator")
             return false

@@ -42,7 +42,7 @@ public extension StoryBoardHandler where Self: UIViewController {
         
         guard let scene = instanceStoryBoard(storyboardName:storyBoardName!).instantiateViewController(withIdentifier: storyboardID) as? T else {
             
-            fatalError("ViewController with identifier \(storyboardID), not found in \(storyBoardName) Storyboard.\nFile : \(file) \nLine Number : \(line) \nFunction : \(function)")
+            fatalError("ViewController with identifier \(storyboardID), not found in \(String(describing: storyBoardName)) Storyboard.\nFile : \(file) \nLine Number : \(line) \nFunction : \(function)")
         }
         
         return scene
@@ -107,7 +107,7 @@ public extension StoryBoardHandler where Self: UIViewController {
             return
         }
         
-        var controlerFound = false
+        //var controlerFound = false
         
         _ = controllers.enumerated().flatMap { i, object in
             
@@ -115,7 +115,7 @@ public extension StoryBoardHandler where Self: UIViewController {
             {
                 NSLog("controller found at index %d", i)
                 
-                controlerFound = true
+                //controlerFound = true
                 _ = navCon.popToViewController((controllers[i]), animated: true)
                 return;
             }
