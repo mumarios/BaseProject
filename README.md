@@ -10,7 +10,7 @@
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
-Add the Plist files (ColorManager.plist, FontManager.plist, FontManager_iPad.plist, TextManager.plist) in your project directory and add the fonts mentioned in FontManager to Info.plist
+Add the Plist files (ColorManager.plist, FontManager.plist, FontManager_iPad.plist) in your project directory and add the fonts mentioned in FontManager to Info.plist
 
 ## Installation
 
