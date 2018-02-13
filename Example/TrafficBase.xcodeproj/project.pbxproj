@@ -15,6 +15,13 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		81574EC696E783C3FCEC73CB /* Pods_TrafficBase_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F472E106BF3A52FAE78E6D75 /* Pods_TrafficBase_Example.framework */; };
 		C70EB30C08BFDD0204D40FEF /* Pods_TrafficBase_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B53D3821657C96131097B97 /* Pods_TrafficBase_Tests.framework */; };
+		D0B28D952032E1E400C5F6DF /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B28D8E2032E1E300C5F6DF /* Roboto-Black.ttf */; };
+		D0B28D962032E1E400C5F6DF /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B28D8F2032E1E300C5F6DF /* Roboto-Bold.ttf */; };
+		D0B28D972032E1E400C5F6DF /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B28D902032E1E300C5F6DF /* Roboto-Italic.ttf */; };
+		D0B28D982032E1E400C5F6DF /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B28D912032E1E300C5F6DF /* Roboto-Light.ttf */; };
+		D0B28D992032E1E400C5F6DF /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B28D922032E1E300C5F6DF /* Roboto-Medium.ttf */; };
+		D0B28D9A2032E1E400C5F6DF /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B28D932032E1E300C5F6DF /* Roboto-Regular.ttf */; };
+		D0B28D9B2032E1E400C5F6DF /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B28D942032E1E300C5F6DF /* Roboto-Thin.ttf */; };
 		D0E5F3E320186909006C42F7 /* ColorManager.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0E5F3DF20186909006C42F7 /* ColorManager.plist */; };
 		D0E5F3E420186909006C42F7 /* FontManager.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0E5F3E020186909006C42F7 /* FontManager.plist */; };
 		D0E5F3E520186909006C42F7 /* FontManager_iPad.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0E5F3E120186909006C42F7 /* FontManager_iPad.plist */; };
@@ -49,6 +56,13 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		C7C23F9A9F413CA29CFA55B2 /* TrafficBase.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TrafficBase.podspec; path = ../TrafficBase.podspec; sourceTree = "<group>"; };
+		D0B28D8E2032E1E300C5F6DF /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		D0B28D8F2032E1E300C5F6DF /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		D0B28D902032E1E300C5F6DF /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		D0B28D912032E1E300C5F6DF /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		D0B28D922032E1E300C5F6DF /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		D0B28D932032E1E300C5F6DF /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		D0B28D942032E1E300C5F6DF /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		D0E5F3DF20186909006C42F7 /* ColorManager.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ColorManager.plist; sourceTree = "<group>"; };
 		D0E5F3E020186909006C42F7 /* FontManager.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FontManager.plist; sourceTree = "<group>"; };
 		D0E5F3E120186909006C42F7 /* FontManager_iPad.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FontManager_iPad.plist; sourceTree = "<group>"; };
@@ -100,6 +114,7 @@
 		607FACD21AFB9204008FA782 /* Example for TrafficBase */ = {
 			isa = PBXGroup;
 			children = (
+				D0B28D8D2032E1E300C5F6DF /* fonts */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -164,6 +179,20 @@
 				0B53D3821657C96131097B97 /* Pods_TrafficBase_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0B28D8D2032E1E300C5F6DF /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D0B28D8E2032E1E300C5F6DF /* Roboto-Black.ttf */,
+				D0B28D8F2032E1E300C5F6DF /* Roboto-Bold.ttf */,
+				D0B28D902032E1E300C5F6DF /* Roboto-Italic.ttf */,
+				D0B28D912032E1E300C5F6DF /* Roboto-Light.ttf */,
+				D0B28D922032E1E300C5F6DF /* Roboto-Medium.ttf */,
+				D0B28D932032E1E300C5F6DF /* Roboto-Regular.ttf */,
+				D0B28D942032E1E300C5F6DF /* Roboto-Thin.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		D0E5F3DE20186909006C42F7 /* Plists */ = {
@@ -268,10 +297,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0E5F3E420186909006C42F7 /* FontManager.plist in Resources */,
+				D0B28D972032E1E400C5F6DF /* Roboto-Italic.ttf in Resources */,
+				D0B28D982032E1E400C5F6DF /* Roboto-Light.ttf in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				D0E5F3E320186909006C42F7 /* ColorManager.plist in Resources */,
+				D0B28D9A2032E1E400C5F6DF /* Roboto-Regular.ttf in Resources */,
+				D0B28D952032E1E400C5F6DF /* Roboto-Black.ttf in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				D0B28D992032E1E400C5F6DF /* Roboto-Medium.ttf in Resources */,
+				D0B28D962032E1E400C5F6DF /* Roboto-Bold.ttf in Resources */,
+				D0B28D9B2032E1E400C5F6DF /* Roboto-Thin.ttf in Resources */,
 				D0E5F3E520186909006C42F7 /* FontManager_iPad.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,11 +8,39 @@
 
 import UIKit
 
-open class BaseUITextView: UITextView, FontDesignable, CornerDesignable, BorderDesignable, PlaceholderDesignable, FillDesignable {
+open class BaseUITextView: UITextView, FontDesignable, CornerDesignable, BorderDesignable, PlaceholderDesignable, FillDesignable, ShadowDesignable {
+    
+    // MARK: - ShadowDesignable
+    @IBInspectable open var shadowRadius: CGFloat = DefaultConfig.shared.defaultShadowRadius {
+        
+        didSet {
+            configureDropShadow();
+        }
+    }
+    
+    @IBInspectable open var shadowOpacity: CGFloat = DefaultConfig.shared.defaultShadowOpacity {
+        
+        didSet {
+            configureDropShadow();
+        }
+    }
+    
+    @IBInspectable open var hasDropShadow:Bool = false {
+        didSet {
+            configureDropShadow();
+        }
+    }
+    
+    @IBInspectable open var hasBaseWidthConstraint:Bool = false {
+        didSet {
+            configureDropShadow();
+        }
+    }
+    
 
     open var placeholderLabel: UILabel = UILabel()
     
-    
+    // MARK: - FontDesignable
     @IBInspectable open var fontNameTheme:String? = DefaultConfig.shared.defaultFontName {
         
         didSet {
@@ -34,6 +62,12 @@ open class BaseUITextView: UITextView, FontDesignable, CornerDesignable, BorderD
     }
 
     // MARK: - CornerDesignable
+    @IBInspectable open var isRounded: Bool = false {
+        didSet {
+            configureCornerRadius();
+        }
+    }
+    
     @IBInspectable open var cornerRadius: CGFloat = CGFloat.nan {
         didSet {
             configureCornerRadius();

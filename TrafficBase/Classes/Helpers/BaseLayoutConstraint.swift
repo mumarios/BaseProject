@@ -15,7 +15,7 @@ open class BaseLayoutConstraint: NSLayoutConstraint {
         super.awakeFromNib();
         self.constant = DesignUtility.convertToRatio(constant, sizedForIPad: false, sizedForNavi:false);
         
-        self.constant = DesignUtility.getValueFromRatio(80)
+        //self.constant = DesignUtility.getValueFromRatio(80)
         
     }
 }

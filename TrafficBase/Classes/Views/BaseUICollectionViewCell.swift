@@ -11,6 +11,12 @@ import UIKit
 open class BaseUICollectionViewCell: UICollectionViewCell, CornerDesignable, FillDesignable, BorderDesignable {
     
     // MARK: - CornerDesignable
+    @IBInspectable open var isRounded: Bool = false {
+        didSet {
+            configureCornerRadius();
+        }
+    }
+    
     @IBInspectable open var cornerRadius: CGFloat = CGFloat.nan {
         didSet {
             configureCornerRadius()

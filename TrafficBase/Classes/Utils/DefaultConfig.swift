@@ -24,6 +24,9 @@ public class DefaultConfig: NSObject {
     public var defaultButtonFontColor = "themeButton";
     public var defaultButtonSelectedFontColor = "themeSelectedButton";
 
+    public var defaultShadowRadius:CGFloat = 2;
+    public var defaultShadowOpacity:CGFloat = 0.3;
+    
     //PRIVATE init so that singleton class should not be reinitialized from anyother class
     fileprivate override init() {
         super.init()

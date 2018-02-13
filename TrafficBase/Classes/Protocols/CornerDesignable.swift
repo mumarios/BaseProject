@@ -5,6 +5,7 @@ public protocol CornerDesignable: class {
      `border-radius`
      */
     var cornerRadius: CGFloat { get set }
+    var isRounded: Bool { get set }
     
     /**
      corner side: Top Left, Top Right, Bottom Left or Bottom Right, if not specified, all corner sides will display,
@@ -42,7 +43,13 @@ public extension CornerDesignable where Self: UICollectionViewCell {
 
 public extension CornerDesignable where Self: UIView {
     public func configureCornerRadius() {
-        if !cornerRadius.isNaN && cornerRadius > 0 {
+        if isRounded == true {
+            layer.cornerRadius = self.frame.size.height * 0.5
+        }
+        else if !cornerRadius.isNaN && cornerRadius > 0 {
+            if isRounded == true {
+                cornerRadius = cornerRadius * DesignUtility.convertToRatio(cornerRadius)
+            }
             if cornerSides == .allSides {
                 layer.cornerRadius = cornerRadius
             } else {
@@ -55,6 +62,7 @@ public extension CornerDesignable where Self: UIView {
             }
         }
     }
+    
     
     fileprivate func cornerSidesLayer() -> CAShapeLayer {
         let cornerSideLayer = CAShapeLayer()
