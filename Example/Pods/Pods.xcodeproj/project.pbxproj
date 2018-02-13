@@ -77,6 +77,8 @@
 		C90AA13C11A1C97927C9D020DEE8E255 /* Pods-TrafficBase_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 774190EC99E3835A295B1BAB1FB68A5D /* Pods-TrafficBase_Example-dummy.m */; };
 		CB6D60925223897FFA2662667DF83E8A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E04C2B770D33E90A7E43AD9A6DDF5 /* Response.swift */; };
 		D0B28D9E2032FD2000C5F6DF /* ShadowDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B28D9C2032FC2300C5F6DF /* ShadowDesignable.swift */; };
+		D0B28DAD20331C1500C5F6DF /* AFParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B28D9F2033174200C5F6DF /* AFParam.swift */; };
+		D0B28DAE20331C1900C5F6DF /* AFManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B28DA02033174200C5F6DF /* AFManagerProtocol.swift */; };
 		D1E9446406B1F443274B2F1B897B02E7 /* BaseUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D95512B0C1F04EB8D32111B536A9F /* BaseUICollectionViewCell.swift */; };
 		D2668C8D8C3BFB4CB64068B6FC4D487E /* DefaultConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D16F02C9EE9818D7961B2C4CE77751C /* DefaultConfig.swift */; };
 		D9C5B59021C889DA3986F22EE74F68BC /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BA5B8F6AE942BA3D7E8C0B8732349B67 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -231,6 +233,8 @@
 		CF6FA20699EAC0AB72A507BB66B191F8 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		CFBFF681209D4E5030FF4116EFD41362 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		D0B28D9C2032FC2300C5F6DF /* ShadowDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowDesignable.swift; sourceTree = "<group>"; };
+		D0B28D9F2033174200C5F6DF /* AFParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFParam.swift; sourceTree = "<group>"; };
+		D0B28DA02033174200C5F6DF /* AFManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFManagerProtocol.swift; sourceTree = "<group>"; };
 		D9EE6D52AA2F0C3238B527C58255F520 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
 		DAA5CA9C1A1A8A10FA0F34E068E281AB /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		DE99AF16AC7077B672DAE5DAD765B367 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
@@ -354,6 +358,8 @@
 		2084EA9905FFC799807CCEA7D2941B14 /* AlmaofireWrapper */ = {
 			isa = PBXGroup;
 			children = (
+				D0B28DA02033174200C5F6DF /* AFManagerProtocol.swift */,
+				D0B28D9F2033174200C5F6DF /* AFParam.swift */,
 				9D55F9C22FDCAAE2B1BEB0A94C8152EC /* AFNetwork.swift */,
 			);
 			path = AlmaofireWrapper;
@@ -831,6 +837,7 @@
 				A6C84B099D58CB8871C890A5B7D88C5C /* AppStoryboardAndNavigation.swift in Sources */,
 				848F0A17051A9BFB3242EAA57807E73C /* Array+Extensions.swift in Sources */,
 				3FDA8AD5EBF3313D6666177B9DD1B2FD /* BaseLayoutConstraint.swift in Sources */,
+				D0B28DAE20331C1900C5F6DF /* AFManagerProtocol.swift in Sources */,
 				554B0CE8B084D1DEC09C7C111D97892C /* BaseManager.swift in Sources */,
 				98B55753FD2068BEF066C2F9F6383175 /* BaseUIBarButtonItem.swift in Sources */,
 				DE4FD7D662D12319ED12D14E7B504891 /* BaseUIButton.swift in Sources */,
@@ -842,6 +849,7 @@
 				54A4F6730BC17565DF7E6737B95BA911 /* BaseUINavigationItem.swift in Sources */,
 				26D19F112FC23DC1C22E12795390F9A6 /* BaseUIPageControl.swift in Sources */,
 				A45A0E89968E6F9BCFDCC12E9281E1EA /* BaseUISegmentedControl.swift in Sources */,
+				D0B28DAD20331C1500C5F6DF /* AFParam.swift in Sources */,
 				E51F1E6558986CE6A5430C2DF635A51E /* BaseUISlider.swift in Sources */,
 				36BE7FF2C9CE364D7CA66F1963594D73 /* BaseUIStackView.swift in Sources */,
 				EAF6798595A24801FD6ECD8E2E241165 /* BaseUIStepper.swift in Sources */,

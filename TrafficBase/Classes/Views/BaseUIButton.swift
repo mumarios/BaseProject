@@ -37,6 +37,7 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
         }
     }
    
+    
     // MARK: - FontDesignable
     @IBInspectable open var fontNameTheme:String? = DefaultConfig.shared.defaultFontName {
         

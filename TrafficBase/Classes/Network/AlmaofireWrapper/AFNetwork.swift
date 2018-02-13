@@ -1,54 +1,22 @@
 //
 //  AFNetwork.swift
-//  FABaseProject
+//  BaseProject
 //
 //  Created by Fahad Ajmal on 01/11/2017.
-//  Copyright © 2017 M.Fahad Ajmal. All rights reserved.
+//  Copyright © 2018 M.Fahad Ajmal. All rights reserved.
 //
 
 import UIKit
 import Alamofire
 import SwiftyJSON
 
-//MARK: Param Types
-
-//simple param
-public struct AFRequestParam {
-    var endpoint: String = ""
-    var params: [String : AnyObject]?
-    var headers: [String : String]?
-    var method: HTTPMethod
-    
-    public init(endpoint:String, params: [String : AnyObject], headers: [String : String], method: HTTPMethod) {
-        self.endpoint = endpoint
-        self.params = params
-        self.headers = headers
-        self.method = method
-    }
-}
-
-//param with image
-public struct AFRequestParamWithImage {
-    var endpoint: String = ""
-    var params: [String : AnyObject]?
-    var headers: [String : String]?
-    var method: HTTPMethod
-    var images: [UIImage]
-    
-    public init(endpoint:String, params: [String : AnyObject], headers: [String : String], method: HTTPMethod, images: [UIImage]) {
-        self.endpoint = endpoint
-        self.params = params
-        self.headers = headers
-        self.method = method
-        self.images = images
-    }
-}
-
+//main class
 public class AFNetwork: NSObject {
     
     //MARK: constant and variable
     //manager
-    public var alamoFireManager : Alamofire.SessionManager!
+    public var alamoFireManager: Alamofire.SessionManager!
+    public var failureMessage = "Unable to connect to the internet"
     
     //network
     public var baseURL = DEFAULT_CONFIG.baseUrl
@@ -66,7 +34,6 @@ public class AFNetwork: NSObject {
     //progress view
     public var progressLabel: UILabel?
     var progressView: UIProgressView?
-    
     struct progressViewConfig {
         static let tag: Int = 98273
         static let color = UIColor.white
@@ -89,6 +56,7 @@ public class AFNetwork: NSObject {
         alamoFireManager.session.configuration.timeoutIntervalForRequest = 120
     }
     
+    //setupSSL
     public func setupSSLPinning(_ fileNameInBundle: String) {
         
         // Set up certificates
@@ -112,7 +80,6 @@ public class AFNetwork: NSObject {
                 configuration: URLSessionConfiguration.default,
                 serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
         )
-        
     }
 }
 
@@ -120,7 +87,7 @@ public class AFNetwork: NSObject {
 extension AFNetwork {
     
     //general request
-    public func apiRequest(_ info: AFRequestParam, isSpinnerNeeded: Bool, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void) {
+    public func apiRequest(_ info: AFParam, isSpinnerNeeded: Bool, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void) {
         
         //if spinner needed
         if isSpinnerNeeded {
@@ -131,7 +98,7 @@ extension AFNetwork {
         
         //request
         alamoFireManager.request(self.baseURL + info.endpoint, method: info.method, parameters: nil, encoding: JSONEncoding.default, headers: mergeWithCommonHeaders(info.headers)).responseJSON { (response) -> Void in
-            
+
             //remove spinner
             if isSpinnerNeeded {
                 DispatchQueue.main.async {
@@ -139,24 +106,23 @@ extension AFNetwork {
                 }
             }
             
-            if response.result.isSuccess {
-                
+            //check response result case
+            switch response.result {
+            case .success:
                 let resJson = JSON(response.result.value!)
                 debugPrint(resJson)
                 success(resJson)
-            }
-            if response.result.isFailure {
-                
+            case .failure:
                 let error : Error = response.result.error!
-                
                 debugPrint("responseError: \(error)")
+                Alert.showMsg(msg: error.localizedDescription)
                 failure(error)
             }
         }
     }
     
     //file upload
-    func apiRequestUpload(_ info: AFRequestParamWithImage, isSpinnerNeeded: Bool, success:@escaping (JSON?) -> Void, failure:@escaping (Error) -> Void) {
+    func apiRequestUpload(_ info: AFParam, isSpinnerNeeded: Bool, success:@escaping (JSON?) -> Void, failure:@escaping (Error) -> Void) {
         
         //if spinner needed
         if isSpinnerNeeded {
@@ -180,11 +146,13 @@ extension AFNetwork {
             }
             
             //multipart images
-            if info.images.count > 0 {
-                for value in info.images {
-                    let imageData = UIImagePNGRepresentation(value) as Data?
-                    if imageData != nil {
-                        multipartFormData.append(imageData!, withName: "image[]")
+            if info.images != nil {
+                if info.images!.count > 0 {
+                    for value in info.images! {
+                        let imageData = UIImagePNGRepresentation(value) as Data?
+                        if imageData != nil {
+                            multipartFormData.append(imageData!, withName: "image[]")
+                        }
                     }
                 }
             }
@@ -229,6 +197,7 @@ extension AFNetwork {
                         case .failure(let responseError):
                             
                             debugPrint("responseError: \(responseError)")
+                            Alert.showMsg(msg: responseError.localizedDescription)
                             failure(responseError)
                         }
                 }
@@ -373,12 +342,3 @@ extension AFNetwork {
         return AFNetwork.shared.commonHeaders
     }
 }
-
-// MARK: - extension for getting the domain name from a string
-extension String {
-    public func getDomain() -> String? {
-        guard let url = URL(string: self) else { return nil }
-        return url.host
-    }
-}
-

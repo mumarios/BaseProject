@@ -65,4 +65,10 @@ extension String {
         return predicate.evaluate(with: self);
     }
     
+    //extension for getting the domain name from a string
+    public func getDomain() -> String? {
+        guard let url = URL(string: self) else { return nil }
+        return url.host
+    }
+    
 }
