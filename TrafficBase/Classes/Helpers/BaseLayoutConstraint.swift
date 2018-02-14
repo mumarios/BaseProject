@@ -18,7 +18,7 @@ open class BaseLayoutConstraint: NSLayoutConstraint {
     }
 }
 
-extension NSLayoutConstraint {
+public extension NSLayoutConstraint {
     @IBInspectable var setConstraint: CGFloat {
         get { return constant }
         set {
@@ -27,65 +27,58 @@ extension NSLayoutConstraint {
     }
 }
 
-
-
-extension UIView {
+public extension UIView {
     
-    func topConstraint() -> NSLayoutConstraint {
+    public func topConstraint() -> NSLayoutConstraint {
         
         return getOriginConstraint(type: .top)
     }
     
-    func bottomConstraint() -> NSLayoutConstraint {
+    public func bottomConstraint() -> NSLayoutConstraint {
         
         return getOriginConstraint(type: .bottom)
     }
     
     
-    func leadingConstraint() -> NSLayoutConstraint {
+    public func leadingConstraint() -> NSLayoutConstraint {
         
         return getOriginConstraint(type: .leading)
     }
     
-    func traillingConstraint() -> NSLayoutConstraint {
+    public func traillingConstraint() -> NSLayoutConstraint {
         
         return getOriginConstraint(type: .trailing)
     }
     
     
-    func leftConstraint() -> NSLayoutConstraint {
+    public func leftConstraint() -> NSLayoutConstraint {
         
         return getOriginConstraint(type: .left)
     }
     
-    
-    
-    func rightConstraint() -> NSLayoutConstraint {
+    public func rightConstraint() -> NSLayoutConstraint {
         
         return getOriginConstraint(type: .right)
     }
     
-    
-    func centerXConstraint() -> NSLayoutConstraint {
+    public func centerXConstraint() -> NSLayoutConstraint {
         
         return getOriginConstraint(type: .centerX)
     }
     
-    
-    
-    func centerYConstraint() -> NSLayoutConstraint {
+    public func centerYConstraint() -> NSLayoutConstraint {
         
         return getOriginConstraint(type: .centerY)
     }
     
     
-    func heightConstraint() -> NSLayoutConstraint {
+    public func heightConstraint() -> NSLayoutConstraint {
         
         return getSizeConstraint(type: .height)
     }
     
     
-    func widthConstraint() -> NSLayoutConstraint {
+    public func widthConstraint() -> NSLayoutConstraint {
         
         return getSizeConstraint(type: .width)
     }
@@ -95,45 +88,32 @@ extension UIView {
         
         for constraint in (self.superview?.constraints)! {
             
-            print("Finding Position")
             if constraint.firstItem  as? UIView == self && constraint.firstAttribute == type{
                 return constraint
-                
-            }else {
-                if constraint.secondItem as? UIView == self && constraint.secondAttribute == type{
+            }
+            else {
+                if constraint.secondItem as? UIView == self && constraint.secondAttribute == type {
                     return constraint
                     
                 }
             }
         }
         
-        
-        log(type)
         return NSLayoutConstraint()
-        
     }
     
     
     func getSizeConstraint( type : NSLayoutAttribute) -> NSLayoutConstraint{
         
-        
         for constraint in self.constraints {
-            
-            print("Finding Size")
             if  constraint.firstAttribute == type{
                 return constraint
-                
             }
         }
-        
-        
-        log(type)
         return NSLayoutConstraint()
-        
     }
     
     private func log(_ text : NSLayoutAttribute){
-        
         print("NO \(text) Constraint Found")
     }
 }

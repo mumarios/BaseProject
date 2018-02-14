@@ -1,14 +1,14 @@
 import UIKit
 
 // USAGE: AppColor.lightBlue.value
-enum AppColor {
+public enum AppColor {
     case lightBlue
     case orange
     case purple
     case gray
 }
 
-extension AppColor {
+public extension AppColor {
     var value: UIColor {
         var instanceColor = UIColor.clear
         

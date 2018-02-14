@@ -14,14 +14,12 @@ public class Alert {
         
     }
     
-    
-    
-    static func showMsg(title : String = "Notification", msg : String , btnActionTitle : String? = "Okay" ) -> Void{
+    public static func showMsg(title : String = "Notification", msg : String , btnActionTitle : String? = "Okay" ) -> Void{
         
         let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: btnActionTitle, style: .default) { (action) in
             
-           
+            
         }
         alertController .addAction(alertAction)
         
@@ -29,7 +27,7 @@ public class Alert {
     }
     
     
-    static func showWithCompletion(title : String = "Notification", msg : String , btnActionTitle : String? = "Okay" , completionAction: @escaping () -> Void ) -> Void{
+    public static func showWithCompletion(title : String = "Notification", msg : String , btnActionTitle : String? = "Okay" , completionAction: @escaping () -> Void ) -> Void{
         
         let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: btnActionTitle, style: .default) { (action) in
@@ -37,12 +35,12 @@ public class Alert {
             completionAction()
         }
         alertController .addAction(alertAction)
-       
-       Alert.showOnWindow(alertController)
+        
+        Alert.showOnWindow(alertController)
     }
     
     
-    static func showWithTwoActions(title : String , msg : String , okBtnTitle : String , okBtnAction: @escaping () -> Void , cancelBtnTitle : String , cancelBtnAction: @escaping () -> Void) -> Void{
+    public static func showWithTwoActions(title : String , msg : String , okBtnTitle : String , okBtnAction: @escaping () -> Void , cancelBtnTitle : String , cancelBtnAction: @escaping () -> Void) -> Void{
         
         let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         
@@ -61,10 +59,10 @@ public class Alert {
         
         alertController .addAction(cancelAction)
         
-       Alert.showOnWindow(alertController)
-}
+        Alert.showOnWindow(alertController)
+    }
     
-    static func showWithThreeActions( title : String , msg : String , FirstBtnTitle : String , FirstBtnAction: @escaping () -> Void , SecondBtnTitle : String , SecondBtnAction: @escaping () -> Void , cancelBtnTitle : String , cancelBtnAction: @escaping () -> Void ) -> Void{
+    public static func showWithThreeActions( title : String , msg : String , FirstBtnTitle : String , FirstBtnAction: @escaping () -> Void , SecondBtnTitle : String , SecondBtnAction: @escaping () -> Void , cancelBtnTitle : String , cancelBtnAction: @escaping () -> Void ) -> Void{
         
         let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         
@@ -89,15 +87,15 @@ public class Alert {
         alertController .addAction(secondBtnAction)
         alertController .addAction(cancelAction)
         
-      
-    
+        
+        
         Alert.showOnWindow(alertController)
         
     }
     
     private static func showOnWindow(_ alert : UIAlertController) {
         
-         UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
         
     }
 }
