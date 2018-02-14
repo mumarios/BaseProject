@@ -15,7 +15,7 @@ public class DefaultConfig: NSObject {
     static let shared = DefaultConfig()
     
     //Project settings
-    public var baseUrl:String = "fontDefault";
+    public var baseUrl:String = "";
 
     public var defaultFontName:String = "fontDefault";
     public var defaultFontSize:String = "sizeMedium";
@@ -30,13 +30,5 @@ public class DefaultConfig: NSObject {
     //PRIVATE init so that singleton class should not be reinitialized from anyother class
     fileprivate override init() {
         super.init()
-        
-        #if PROD
-            baseUrl = "https://network.getsandbox.com/"
-        #elseif STAG
-            baseUrl = "https://network.getsandbox.com/"
-        #else
-            baseUrl = "https://network.getsandbox.com/"
-        #endif
     }
 }
