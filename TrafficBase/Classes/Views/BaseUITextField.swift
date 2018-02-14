@@ -194,27 +194,14 @@ open class BaseUITextField: UITextField, FontDesignable, CornerDesignable, Borde
     }
     
     
-    private var _placeholderKey:String?
     override open var placeholder: String? {
         get {
             return super.placeholder;
         }
         
         set {
-            guard let key:String = newValue else {
-                _placeholderKey = nil;
-                super.placeholder = newValue;
-                return;
-            }
-            
-            let newPlaceHolder:String;
-            
-            _placeholderKey = nil;
-            
-            newPlaceHolder = key;
-            
-            super.placeholder = newPlaceHolder;
-            
+            super.placeholder = newValue;
+            configurePlaceholderColor();
         }
     }
     

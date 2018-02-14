@@ -11,9 +11,11 @@ import TrafficBase
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var textField: BaseUITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        textField.placeholder = "Testing"
     }
 
     override func didReceiveMemoryWarning() {

@@ -122,9 +122,8 @@
 		607FACD21AFB9204008FA782 /* Example for TrafficBase */ = {
 			isa = PBXGroup;
 			children = (
+				D01FB3D320340CBC00B71179 /* Managers */,
 				D0B28DA720331B7900C5F6DF /* Model */,
-				D0B28DA3203319BA00C5F6DF /* LoginManager.swift */,
-				D0B28DA4203319BA00C5F6DF /* UserListManager.swift */,
 				D0B28D8D2032E1E300C5F6DF /* fonts */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
@@ -190,6 +189,15 @@
 				0B53D3821657C96131097B97 /* Pods_TrafficBase_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D01FB3D320340CBC00B71179 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D0B28DA3203319BA00C5F6DF /* LoginManager.swift */,
+				D0B28DA4203319BA00C5F6DF /* UserListManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		D0B28D8D2032E1E300C5F6DF /* fonts */ = {
