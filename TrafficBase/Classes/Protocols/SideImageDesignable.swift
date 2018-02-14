@@ -56,6 +56,8 @@ fileprivate extension SideImageDesignable where Self: BaseUITextField {
     func configureLeftImage() {
         
         guard let leftImage = leftImage else {
+            leftView = nil;
+            leftViewMode = .never
             return
         }
         
@@ -70,6 +72,8 @@ fileprivate extension SideImageDesignable where Self: BaseUITextField {
     func configureRightImage() {
         
         guard let rightImage = rightImage else {
+            rightView = nil;
+            rightViewMode = .never
             return
         }
         

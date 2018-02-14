@@ -15,7 +15,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textField.placeholder = "Testing"
+        textField.leftImage = UIImage.init(named: "Agree-Sel")
+        textField.leftImage = nil
+        textField.leftImage = UIImage.init(named: "Agree-Sel")
+        
     }
 
     override func didReceiveMemoryWarning() {
