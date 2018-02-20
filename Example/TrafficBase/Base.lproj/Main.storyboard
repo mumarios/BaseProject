@@ -72,19 +72,43 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholderThemeColor" value="red"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OV-PT-h8M" customClass="BaseUIButton" customModule="TrafficBase">
+                                <rect key="frame" x="37.5" y="50" width="300" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="G7f-Np-AIs"/>
+                                </constraints>
+                                <state key="normal" title="Button 1235234" image="Agree-Sel">
+                                    <color key="titleColor" red="0.082380540670000002" green="0.34516391159999998" blue="0.5362424254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="titleLeftImageRightCorner" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="onlyImage" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spacingFromCorner">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="adjustImageOnly" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="titleOnLeft" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spaceValue">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="eG2-Ya-oG1" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="EYb-LQ-4j0"/>
+                            <constraint firstItem="7OV-PT-h8M" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Jeg-vi-zH1"/>
                             <constraint firstItem="inl-H0-WTl" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="KnZ-ha-QCm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jlh-DR-qqV" secondAttribute="trailing" constant="8" id="NwO-wb-Otr"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="inl-H0-WTl" secondAttribute="bottom" constant="123" id="ca4-wk-Nx8"/>
                             <constraint firstItem="eG2-Ya-oG1" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="gLc-Ph-tK3"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Jlh-DR-qqV" secondAttribute="bottom" constant="102" id="iWF-U9-Ymv"/>
+                            <constraint firstItem="7OV-PT-h8M" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="ifq-se-UK8"/>
                             <constraint firstItem="Jlh-DR-qqV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="rxs-hd-P75"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnTest" destination="7OV-PT-h8M" id="0Ag-p2-qeC"/>
                         <outlet property="textField" destination="Jlh-DR-qqV" id="Okr-rH-jsw"/>
                     </connections>
                 </viewController>
@@ -92,4 +116,7 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="Agree-Sel" width="17" height="17"/>
+    </resources>
 </document>

@@ -11,12 +11,13 @@ import TrafficBase
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var btnTest: BaseUIButton!
     @IBOutlet weak var textField: BaseUITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textField.leftImage = UIImage.init(named: "Agree-Sel")
-        textField.leftImage = nil
+        //textField.leftImage = UIImage.init(named: "Agree-Sel")
+        //textField.leftImage = nil
         textField.leftImage = UIImage.init(named: "Agree-Sel")
         
     }

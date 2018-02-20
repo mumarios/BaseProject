@@ -8,7 +8,29 @@
 
 import UIKit
 
-open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesignable, MaskDesignable, FillDesignable, ShadowDesignable {
+open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesignable, MaskDesignable, FillDesignable, ShadowDesignable, ButtonImageDesignable {
+   
+    
+    
+    // MARK: - ButtonImageDesignable
+    @IBInspectable public var titleOnLeft : Bool = false {
+        didSet {
+            //configureButtonImage();
+        }
+    }
+    @IBInspectable public var adjustImageOnly : Bool = false {
+        didSet {
+            //configureButtonImage();
+        }
+    }
+    
+    @IBInspectable public var spaceValue : CGFloat = DefaultConfig.shared.defaultButtonImageSpacing {
+        didSet {
+            configureButtonImage();
+        }
+    }
+
+    
     
     // MARK: - ShadowDesignable
     @IBInspectable open var shadowRadius: CGFloat = DefaultConfig.shared.defaultShadowRadius {
@@ -203,11 +225,13 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
             maskType = MaskType(string: _maskType)
         }
     }
-    
+   
     //MARK: - Initializers
     open override func awakeFromNib() {
         super.awakeFromNib();
         configureInspectableProperties();
+        
+        configureButtonImage();
         
         self.addTarget(self, action: #selector(self.highlight), for: .touchDown)
         self.addTarget(self, action: #selector(self.unhighlight), for: .touchUpInside)

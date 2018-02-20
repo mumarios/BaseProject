@@ -76,6 +76,7 @@
 		C3A55697FE66B20B8306E2C95A7BE298 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A98BFF1C775DD2D05C8C5A401BEB65D /* ColorManager.swift */; };
 		C90AA13C11A1C97927C9D020DEE8E255 /* Pods-TrafficBase_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 774190EC99E3835A295B1BAB1FB68A5D /* Pods-TrafficBase_Example-dummy.m */; };
 		CB6D60925223897FFA2662667DF83E8A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E04C2B770D33E90A7E43AD9A6DDF5 /* Response.swift */; };
+		D035073C203C05070087B685 /* ButtonImageDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D035073A203C036C0087B685 /* ButtonImageDesignable.swift */; };
 		D0B28D9E2032FD2000C5F6DF /* ShadowDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B28D9C2032FC2300C5F6DF /* ShadowDesignable.swift */; };
 		D0B28DAD20331C1500C5F6DF /* AFParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B28D9F2033174200C5F6DF /* AFParam.swift */; };
 		D0B28DAE20331C1900C5F6DF /* AFManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B28DA02033174200C5F6DF /* AFManagerProtocol.swift */; };
@@ -232,6 +233,7 @@
 		CD581727569A4903E06B8D266A6FCFB7 /* Pods-TrafficBase_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TrafficBase_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		CF6FA20699EAC0AB72A507BB66B191F8 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		CFBFF681209D4E5030FF4116EFD41362 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		D035073A203C036C0087B685 /* ButtonImageDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonImageDesignable.swift; sourceTree = "<group>"; };
 		D0B28D9C2032FC2300C5F6DF /* ShadowDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowDesignable.swift; sourceTree = "<group>"; };
 		D0B28D9F2033174200C5F6DF /* AFParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFParam.swift; sourceTree = "<group>"; };
 		D0B28DA02033174200C5F6DF /* AFManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFManagerProtocol.swift; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				09B3270BC60C06A7FF1FB7F797C19CF6 /* SideImageDesignable.swift */,
 				52181FE555FB599700197D16A8ED1F50 /* TintDesignable.swift */,
 				D0B28D9C2032FC2300C5F6DF /* ShadowDesignable.swift */,
+				D035073A203C036C0087B685 /* ButtonImageDesignable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -881,6 +884,7 @@
 				688A4FAC7FF0C81B0771788E483B0713 /* SideImageDesignable.swift in Sources */,
 				1C4820CC35569CCE446E5ED110F32ED0 /* String+Extensions.swift in Sources */,
 				3031C81D3516A96273ED79F57D01A3FB /* TintDesignable.swift in Sources */,
+				D035073C203C05070087B685 /* ButtonImageDesignable.swift in Sources */,
 				9B36D12974E5FCA0ED18B782D4E3B24B /* TrafficBase-dummy.m in Sources */,
 				7CD9AE1A49A08534EF1D70A2C42A5950 /* UIColor+Utility.swift in Sources */,
 				33F602B22D44B57239DECA3617015BE8 /* Utility.swift in Sources */,
