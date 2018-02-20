@@ -15,12 +15,12 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
     // MARK: - ButtonImageDesignable
     @IBInspectable public var titleOnLeft : Bool = false {
         didSet {
-            //configureButtonImage();
+            configureButtonImage();
         }
     }
     @IBInspectable public var adjustImageOnly : Bool = false {
         didSet {
-            //configureButtonImage();
+            configureButtonImage();
         }
     }
     
