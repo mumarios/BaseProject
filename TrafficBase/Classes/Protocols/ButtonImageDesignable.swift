@@ -9,8 +9,9 @@ import Foundation
 
 public protocol ButtonImageDesignable: class {
     
+    var applyHorizontalValues: Bool { get set }
     var titleOnLeft: Bool { get set }
-    var adjustImageOnly: Bool { get set }
+    var keepTextInCenter: Bool { get set }
     var spaceValue: CGFloat { get set }
 }
 
@@ -18,62 +19,41 @@ public protocol ButtonImageDesignable: class {
 public extension ButtonImageDesignable where Self: BaseUIButton {
     
     public func configureButtonImage() {
+        
         setTitleAndImageCorners();
     }
     
     fileprivate func setTitleAndImageCorners() {
         
-        if (titleOnLeft == true) {
-            
-            if (adjustImageOnly == false) {
-                var spacingTitle =  CGFloat ( self.frame.size.width - (self.imageView!.frame.size.width + self.titleLabel!.frame.size.width + self.frame.height * 0.5)) + self.frame.height * 0.5
+        if imageView != nil, applyHorizontalValues == true {
+            if titleOnLeft == true {
                 
-                if spaceValue > 0 {
-                    
-                    spacingTitle = CGFloat (self.frame.size.width - (self.imageView!.frame.size.width + self.titleLabel!.frame.size.width + DesignUtility.convertToRatio(spaceValue)))
+                let rightEdge = (frame.size.width - (imageView?.frame.size.width)!)
+                let leftEdge = ((titleLabel?.frame.size.width)! - (frame.size.width + (imageView?.frame.size.width ?? 0)))
+                
+                imageEdgeInsets = UIEdgeInsets(top: 0, left: rightEdge - (spaceValue), bottom: 0, right: spaceValue)
+                if keepTextInCenter == false {
+                    titleEdgeInsets = UIEdgeInsets(top: 0, left:leftEdge + spaceValue, bottom: 0, right: -spaceValue)
+                }
+                else {
+                    titleEdgeInsets = UIEdgeInsets(top: 0, left:-(imageView?.frame.size.width ?? 0), bottom: 0, right: 0)
                 }
                 
-                self.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, spacingTitle )
-            }
-            var spacingImage = CGFloat (self.frame.size.width  - (self.imageView!.frame.size.width + self.frame.height * 0.5 ))  - DesignUtility.convertToRatio(6)
-            
-            if spaceValue > 0 {
-                
-                spacingImage = CGFloat (self.frame.size.width - (self.imageView!.frame.size.width + self.titleLabel!.frame.size.width + DesignUtility.convertToRatio(spaceValue)))
-            }
-            
-            self.imageEdgeInsets = UIEdgeInsetsMake(0, spacingImage, 0, 0);
-        }
-        else {
-            
-            if (adjustImageOnly == false) {
-                
-                var spacingTitle =  CGFloat ( self.frame.size.width - (self.imageView!.frame.size.width + self.titleLabel!.frame.size.width +  self.frame.height * 0.5))  - self.frame.height * 0.5
-                
-                
-                if spaceValue > 0 {
-                    
-                    spacingTitle =  CGFloat (self.frame.size.width - (self.imageView!.frame.size.width + self.titleLabel!.frame.size.width + DesignUtility.convertToRatio(spaceValue)))
-                }
-                
-                self.titleEdgeInsets = UIEdgeInsetsMake(0, spacingTitle, 0, 0 )
-            }
-            
-            var spacingImage : CGFloat = 0.0;
-            
-            if spaceValue > 0 {
-                
-                spacingImage = CGFloat (self.frame.size.width - (self.imageView!.frame.size.width + self.titleLabel!.frame.size.width + DesignUtility.convertToRatio(spaceValue)))
             }
             else {
-                spacingImage = CGFloat ( self.frame.size.width - (self.imageView!.frame.size.width + self.titleLabel!.frame.size.width + self.frame.height * 0.5) )  - self.frame.height * 0.5
+                let rightEdge = (frame.size.width - (imageView?.frame.size.width)!)
+                let leftEdge = ((titleLabel?.frame.size.width)! - (frame.size.width - (imageView?.frame.size.width ?? 0)))
+                
+                if keepTextInCenter == false {
+                    titleEdgeInsets = UIEdgeInsets(top: 0, left:-spaceValue, bottom: 0, right: leftEdge + spaceValue)
+                }
+                else {
+                    titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                }
+                imageEdgeInsets = UIEdgeInsets(top: 0, left: spaceValue, bottom: 0, right: rightEdge - spaceValue)
+                
             }
-            
-            self.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, spacingImage);
-            
         }
-        
-        self.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         
     }
 }

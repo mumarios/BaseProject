@@ -9,27 +9,31 @@
 import UIKit
 
 open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesignable, MaskDesignable, FillDesignable, ShadowDesignable, ButtonImageDesignable {
-   
-    
     
     // MARK: - ButtonImageDesignable
-    @IBInspectable public var titleOnLeft : Bool = false {
-        didSet {
-            configureButtonImage();
-        }
-    }
-    @IBInspectable public var adjustImageOnly : Bool = false {
+    @IBInspectable open var applyHorizontalValues: Bool = false {
         didSet {
             configureButtonImage();
         }
     }
     
-    @IBInspectable public var spaceValue : CGFloat = DefaultConfig.shared.defaultButtonImageSpacing {
+    @IBInspectable open var spaceValue: CGFloat = 0.0 {
         didSet {
             configureButtonImage();
         }
     }
-
+    
+    @IBInspectable open var titleOnLeft: Bool = false {
+        didSet {
+            configureButtonImage();
+        }
+    }
+    
+    @IBInspectable open var keepTextInCenter: Bool = true {
+        didSet {
+            configureButtonImage();
+        }
+    }
     
     
     // MARK: - ShadowDesignable
@@ -231,8 +235,6 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
         super.awakeFromNib();
         configureInspectableProperties();
         
-        configureButtonImage();
-        
         self.addTarget(self, action: #selector(self.highlight), for: .touchDown)
         self.addTarget(self, action: #selector(self.unhighlight), for: .touchUpInside)
         self.addTarget(self, action: #selector(self.unhighlight), for: .touchDragOutside)
@@ -241,6 +243,7 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
     
     open override func layoutSubviews() {
         super.layoutSubviews();
+        
         configureAfterLayoutSubviews();
         
     }

@@ -77,20 +77,19 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="G7f-Np-AIs"/>
                                 </constraints>
-                                <state key="normal" title="Button 1235234" image="Agree-Sel">
+                                <state key="normal" title="abc" image="Agree-Sel">
                                     <color key="titleColor" red="0.082380540670000002" green="0.34516391159999998" blue="0.5362424254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="titleLeftImageRightCorner" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="onlyImage" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="spacingFromCorner">
-                                        <real key="value" value="20"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="adjustImageOnly" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="titleOnLeft" value="NO"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="spaceValue">
-                                        <real key="value" value="15"/>
+                                        <real key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keepTextInCenter" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="applyHorizontalValues" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="titleOnLeft" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
@@ -114,6 +113,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="G8V-B6-Jwl">
+            <objects>
+                <viewController id="RZF-QV-2Nh" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="USe-Un-xo4"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Fz-Jq-3UY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Yw-a3-PuK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kBm-He-EuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1122" y="-34"/>
         </scene>
     </scenes>
     <resources>
