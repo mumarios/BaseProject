@@ -185,7 +185,7 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
         }
     }
     
-    @IBInspectable var bgHighlightedColor: String? {
+    @IBInspectable open var bgHighlightedColor: String? {
         didSet{
             
             let fillColor = UIColor.color(forKey: bgHighlightedColor);

@@ -104,6 +104,34 @@ public class DeviceUtility: NSObject {
         return size
     }
     
+    // Get the device name from screen size
+    public static func getDeviceType() -> Device
+    {
+        
+        let height = UIScreen.main.nativeBounds.size.height
+        
+        switch height {
+        case  960:
+            return .iPhone4
+        case  1136:
+            return .iPhone5
+        case  1334:
+            return .iPhone6
+        case  2208:
+            return .iPhone6Plus
+        case  2436:
+            return .iPhoneX
+        case  1024:
+            return .iPadMini
+        case  2048:
+            return .iPad2
+        case  2732:
+            return .iPadPro
+        default:
+            return .unknown;
+        }
+    }
+    
     // Check if the orientation is landscape
     public class func isLandscape() -> Bool
     {
