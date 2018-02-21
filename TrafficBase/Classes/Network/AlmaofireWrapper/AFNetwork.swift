@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
 
 //main class
 public class AFNetwork: NSObject {
@@ -87,7 +86,7 @@ public class AFNetwork: NSObject {
 extension AFNetwork {
     
     //general request
-    public func apiRequest(_ info: AFParam, isSpinnerNeeded: Bool, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void) {
+    public func apiRequest(_ info: AFParam, isSpinnerNeeded: Bool, success:@escaping (Data?) -> Void, failure:@escaping (Error) -> Void) {
         
         //if spinner needed
         if isSpinnerNeeded {
@@ -98,7 +97,7 @@ extension AFNetwork {
         
         //request
         alamoFireManager.request(self.baseURL + info.endpoint, method: info.method, parameters: nil, encoding: JSONEncoding.default, headers: mergeWithCommonHeaders(info.headers)).responseJSON { (response) -> Void in
-
+            
             //remove spinner
             if isSpinnerNeeded {
                 DispatchQueue.main.async {
@@ -109,9 +108,8 @@ extension AFNetwork {
             //check response result case
             switch response.result {
             case .success:
-                let resJson = JSON(response.result.value!)
-                debugPrint(resJson)
-                success(resJson)
+                debugPrint(response)
+                success(response.data)
             case .failure:
                 let error : Error = response.result.error!
                 debugPrint("responseError: \(error)")
@@ -122,7 +120,7 @@ extension AFNetwork {
     }
     
     //file upload
-    func apiRequestUpload(_ info: AFParam, isSpinnerNeeded: Bool, success:@escaping (JSON?) -> Void, failure:@escaping (Error) -> Void) {
+    func apiRequestUpload(_ info: AFParam, isSpinnerNeeded: Bool, success:@escaping (NSDictionary?) -> Void, failure:@escaping (Error) -> Void) {
         
         //if spinner needed
         if isSpinnerNeeded {
@@ -187,13 +185,11 @@ extension AFNetwork {
                             debugPrint(value)
                             
                             if let result = response.result.value {
-                                let resJson = JSON(result)
-                                success(resJson)
+                                success(result as? NSDictionary)
                             }
                             else {
                                 success(nil)
                             }
-                            
                         case .failure(let responseError):
                             
                             debugPrint("responseError: \(responseError)")
@@ -342,3 +338,4 @@ extension AFNetwork {
         return AFNetwork.shared.commonHeaders
     }
 }
+

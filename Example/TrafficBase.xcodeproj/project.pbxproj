@@ -22,8 +22,6 @@
 		D0B28D992032E1E400C5F6DF /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B28D922032E1E300C5F6DF /* Roboto-Medium.ttf */; };
 		D0B28D9A2032E1E400C5F6DF /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B28D932032E1E300C5F6DF /* Roboto-Regular.ttf */; };
 		D0B28D9B2032E1E400C5F6DF /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B28D942032E1E300C5F6DF /* Roboto-Thin.ttf */; };
-		D0B28DA5203319BA00C5F6DF /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B28DA3203319BA00C5F6DF /* LoginManager.swift */; };
-		D0B28DA6203319BA00C5F6DF /* UserListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B28DA4203319BA00C5F6DF /* UserListManager.swift */; };
 		D0B28DAB20331B7900C5F6DF /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B28DA920331B7900C5F6DF /* UserListModel.swift */; };
 		D0B28DAC20331B7900C5F6DF /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B28DAA20331B7900C5F6DF /* Users.swift */; };
 		D0E5F3E320186909006C42F7 /* ColorManager.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0E5F3DF20186909006C42F7 /* ColorManager.plist */; };
@@ -67,8 +65,6 @@
 		D0B28D922032E1E300C5F6DF /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		D0B28D932032E1E300C5F6DF /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		D0B28D942032E1E300C5F6DF /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
-		D0B28DA3203319BA00C5F6DF /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
-		D0B28DA4203319BA00C5F6DF /* UserListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListManager.swift; sourceTree = "<group>"; };
 		D0B28DA920331B7900C5F6DF /* UserListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListModel.swift; sourceTree = "<group>"; };
 		D0B28DAA20331B7900C5F6DF /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		D0E5F3DF20186909006C42F7 /* ColorManager.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ColorManager.plist; sourceTree = "<group>"; };
@@ -194,8 +190,6 @@
 		D01FB3D320340CBC00B71179 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				D0B28DA3203319BA00C5F6DF /* LoginManager.swift */,
-				D0B28DA4203319BA00C5F6DF /* UserListManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -458,9 +452,7 @@
 				D0B28DAB20331B7900C5F6DF /* UserListModel.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				D0B28DA6203319BA00C5F6DF /* UserListManager.swift in Sources */,
 				D0B28DAC20331B7900C5F6DF /* Users.swift in Sources */,
-				D0B28DA5203319BA00C5F6DF /* LoginManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
