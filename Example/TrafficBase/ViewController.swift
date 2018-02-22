@@ -13,6 +13,9 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var btnTest: BaseUIButton!
     @IBOutlet weak var textField: BaseUITextField!
+    
+    //@IBOutlet weak var textView: BaseUITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +23,7 @@ class ViewController: UIViewController {
         //textField.leftImage = nil
         textField.leftImage = UIImage.init(named: "Agree-Sel")
         
+        //textView.placeholderText = "Testing placeholder"
     }
 
     override func didReceiveMemoryWarning() {

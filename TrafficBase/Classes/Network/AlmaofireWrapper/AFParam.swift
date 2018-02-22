@@ -26,3 +26,4 @@ public struct AFParam {
         self.images = images
     }
 }
+

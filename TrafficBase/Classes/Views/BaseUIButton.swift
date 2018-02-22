@@ -243,7 +243,9 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
     
     open override func layoutSubviews() {
         super.layoutSubviews();
-        
+        if applyHorizontalValues == true {
+            configureButtonImage();
+        }
         configureAfterLayoutSubviews();
         
     }

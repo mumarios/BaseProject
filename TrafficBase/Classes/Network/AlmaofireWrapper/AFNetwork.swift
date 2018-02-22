@@ -94,9 +94,9 @@ extension AFNetwork {
                 AFNetwork.shared.showSpinner(nil)
             }
         }
-        
         //request
-        alamoFireManager.request(self.baseURL + info.endpoint, method: info.method, parameters: nil, encoding: JSONEncoding.default, headers: mergeWithCommonHeaders(info.headers)).responseJSON { (response) -> Void in
+        alamoFireManager.request(self.baseURL + info.endpoint, method: info.method, parameters: info.params, encoding: URLEncoding(destination: .methodDependent), headers: mergeWithCommonHeaders(info.headers)).responseJSON { (response) -> Void in
+            
             
             //remove spinner
             if isSpinnerNeeded {
