@@ -94,8 +94,9 @@ extension AFNetwork {
                 AFNetwork.shared.showSpinner(nil)
             }
         }
+        //URLEncoding(destination: .methodDependent)
         //request
-        alamoFireManager.request(self.baseURL + info.endpoint, method: info.method, parameters: info.params, encoding: URLEncoding(destination: .methodDependent), headers: mergeWithCommonHeaders(info.headers)).responseJSON { (response) -> Void in
+        alamoFireManager.request(self.baseURL + info.endpoint, method: info.method, parameters: info.params, encoding: info.parameterEncoding, headers: mergeWithCommonHeaders(info.headers)).responseJSON { (response) -> Void in
             
             
             //remove spinner
@@ -338,4 +339,5 @@ extension AFNetwork {
         return AFNetwork.shared.commonHeaders
     }
 }
+
 
