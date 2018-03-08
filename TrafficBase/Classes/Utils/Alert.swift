@@ -30,7 +30,7 @@ public class Alert {
         Alert.showOnWindow(alertController)
     }
     
-    public static func showMsgOnViewController(title : String = "Notification", msg : String , btnActionTitle : String? = "Okay", parentViewController:UIViewController? ) -> Void{
+    public static func showMsg(title : String = "Notification", msg : String , btnActionTitle : String? = "Okay", parentViewController:UIViewController? ) -> Void{
         
         self.parentWindow = parentViewController;
         
@@ -60,7 +60,7 @@ public class Alert {
         Alert.showOnWindow(alertController)
     }
     
-    public static func showWithCompletionOnViewController(title : String = "Notification", msg : String , btnActionTitle : String? = "Okay" , completionAction: @escaping () -> Void, parentViewController:UIViewController? ) -> Void{
+    public static func showWithCompletion(title : String = "Notification", msg : String , btnActionTitle : String? = "Okay" , completionAction: @escaping () -> Void, parentViewController:UIViewController? ) -> Void{
         
         self.parentWindow = parentViewController;
         
@@ -98,7 +98,7 @@ public class Alert {
         Alert.showOnWindow(alertController)
     }
     
-    public static func showWithTwoActionsOnViewController(title : String , msg : String , okBtnTitle : String , okBtnAction: @escaping () -> Void , cancelBtnTitle : String , cancelBtnAction: @escaping () -> Void, parentViewController:UIViewController?) -> Void{
+    public static func showWithTwoActions(title : String , msg : String , okBtnTitle : String , okBtnAction: @escaping () -> Void , cancelBtnTitle : String , cancelBtnAction: @escaping () -> Void, parentViewController:UIViewController?) -> Void{
         
         self.parentWindow = parentViewController;
         
@@ -155,7 +155,7 @@ public class Alert {
         
     }
     
-    public static func showWithThreeActionsOnViewController( title : String , msg : String , FirstBtnTitle : String , FirstBtnAction: @escaping () -> Void , SecondBtnTitle : String , SecondBtnAction: @escaping () -> Void , cancelBtnTitle : String , cancelBtnAction: @escaping () -> Void, parentViewController:UIViewController?) -> Void{
+    public static func showWithThreeActions( title : String , msg : String , FirstBtnTitle : String , FirstBtnAction: @escaping () -> Void , SecondBtnTitle : String , SecondBtnAction: @escaping () -> Void , cancelBtnTitle : String , cancelBtnAction: @escaping () -> Void, parentViewController:UIViewController?) -> Void{
         
         self.parentWindow = parentViewController;
         let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
@@ -193,7 +193,16 @@ public class Alert {
             parentWindow?.present(alert, animated: true, completion: nil)
         }
         else {
-            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+            
+            if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                while let presentedViewController = topController.presentedViewController {
+                    topController = presentedViewController
+                }
+                topController.present(alert, animated: true, completion: nil)
+                // topController should now be your topmost view controller
+            } else {
+                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+            }
         }
         
         
