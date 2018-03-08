@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FontManager: BaseManager {
+public class FontManager: BaseManager {
     private static var _sharedInstance: FontManager = FontManager();
     
     class override var sharedInstance: FontManager {
