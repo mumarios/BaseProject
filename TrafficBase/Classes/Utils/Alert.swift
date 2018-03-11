@@ -200,9 +200,7 @@ public class Alert {
                 }
                 topController.present(alert, animated: true, completion: nil)
                 // topController should now be your topmost view controller
-            } else {
-                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
-            }
+            } 
         }
         
         

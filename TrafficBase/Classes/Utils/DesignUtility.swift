@@ -73,9 +73,6 @@ public class DesignUtility: NSObject {
         return value * DesignUtility.deviceRatio;
     }
     
-    
-    
-    
     public class func convertPointToRatio(_ value:CGPoint, sizedForIPad:Bool = false) -> CGPoint {
         return CGPoint(x:self.convertToRatio(value.x, sizedForIPad: sizedForIPad), y:self.convertToRatio(value.y, sizedForIPad: sizedForIPad));
     }

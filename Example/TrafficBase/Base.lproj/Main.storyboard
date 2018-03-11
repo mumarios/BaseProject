@@ -75,9 +75,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyL-RY-k53">
                                 <rect key="frame" x="8" y="30" width="359" height="62"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OV-PT-h8M" customClass="BaseUIButton" customModule="TrafficBase">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OV-PT-h8M" customClass="BaseUIButton" customModule="TrafficBase">
                                         <rect key="frame" x="8" y="0.0" width="343" height="62"/>
-                                        <state key="normal" title="abc" image="dropdown_icon">
+                                        <state key="normal" image="dropdown_icon">
+                                            <string key="title">abc asdsa dhadkj ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk abc asdsa dhadkj ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk  ahsdkj asdhkj hsjk asdk </string>
                                             <color key="titleColor" red="0.082380540670000002" green="0.34516391159999998" blue="0.5362424254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -90,6 +91,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="keepTextInCenter" value="NO"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="applyHorizontalValues" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="titleOnLeft" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="truncateTail" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                 </subviews>

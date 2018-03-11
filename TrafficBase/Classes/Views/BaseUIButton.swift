@@ -35,6 +35,11 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
         }
     }
     
+    @IBInspectable open var truncateTail: Bool = true {
+        didSet {
+            configureButtonImage();
+        }
+    }
     
     // MARK: - ShadowDesignable
     @IBInspectable open var shadowRadius: CGFloat = DefaultConfig.shared.defaultShadowRadius {
@@ -62,7 +67,7 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
             configureDropShadow();
         }
     }
-   
+    
     
     // MARK: - FontDesignable
     @IBInspectable open var fontNameTheme:String? = DefaultConfig.shared.defaultFontName {
@@ -229,7 +234,7 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
             maskType = MaskType(string: _maskType)
         }
     }
-   
+    
     //MARK: - Initializers
     open override func awakeFromNib() {
         super.awakeFromNib();
@@ -259,7 +264,7 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
         configureMask(previousMaskType: maskType);
         configureCornerRadius();
         configureBorder();
-
+        
     }
     
     @objc func unhighlight(){
@@ -285,3 +290,4 @@ open class BaseUIButton: UIButton, FontDesignable, CornerDesignable, BorderDesig
     }
     
 }
+
