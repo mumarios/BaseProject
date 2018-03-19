@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ColorManager: BaseManager {
+public class ColorManager: BaseManager {
     private static var _sharedInstance: ColorManager = ColorManager();
     
     class override var sharedInstance: ColorManager {

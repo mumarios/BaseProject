@@ -35,7 +35,6 @@ public class DesignUtility: NSObject {
     }
     
     //Getting font size with minimum range
-    
     public class func getFontSize(fSize : CGFloat) ->CGFloat{
         var minFontSize:CGFloat = 0;
         
@@ -49,6 +48,34 @@ public class DesignUtility: NSObject {
         
         return resizedFontSize
     }
+    
+    
+    // Get font size on behalf of the key in plist
+    public class func getFontSizeFromPlist(plistFontkey: String) ->CGFloat {
+        
+        var minFontSize:CGFloat = 0;
+        minFontSize = CGFloat.init(FontManager.style(forKey: "minimumFontSize"))
+        let desiredFontSize = CGFloat.init(FontManager.style(forKey: plistFontkey))
+        var resizedFontSize = DesignUtility.convertToRatio(desiredFontSize, sizedForIPad: DesignUtility.isIPad, sizedForNavi: false);
+        if resizedFontSize < minFontSize {
+            resizedFontSize = minFontSize;
+        }
+        
+        return resizedFontSize
+        
+    }
+    
+    // Initialize font with keys in plist
+    public class func getFont(fontNameTheme:String?, fontSizeTheme:String?)->UIFont? {
+        let fName = (fontNameTheme != nil && !(fontNameTheme?.isEmpty)!) ? FontManager.constant(forKey: fontNameTheme!) : "Helvetica";
+        let fontSize = (fontSizeTheme != nil && !(fontSizeTheme?.isEmpty)!) ? FontManager.style(forKey: fontSizeTheme!) : 25;
+        
+        let resizedFontSize = DesignUtility.getFontSize(fSize: CGFloat(fontSize))
+        
+        let fnt = UIFont.init(name: fName!, size: resizedFontSize);
+        return fnt;
+    }
+
     
     /// Flag to check user interfce layout direction
     @nonobjc public static var isRTL:Bool  {
